@@ -1,8 +1,11 @@
 <?php
 
+require_once './trait/HistoriquePrix.php';
 
 abstract class Produit
 {
+
+    use HistoriquePrix ;
     private $nom;
     private $prix;
 
@@ -10,6 +13,8 @@ abstract class Produit
     {
         $this->nom = $nom;
         $this->prix = $prix;
+        $this->ajouterHistorique($prix);
+
     }
 
     public function getNom(): string
@@ -20,9 +25,16 @@ abstract class Produit
     public function getPrix(): float
     {
         return $this->prix;
+
     }
 
-    abstract public function calculerPrixFinal(): float ;
+    public function setPrix(float $prix): void
+    {
+        $this->prix = $prix;
+        $this->ajouterHistorique($prix);
+    }
+
+    abstract public function calculerPrixFinal(): float;
 
 }
 

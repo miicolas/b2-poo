@@ -2,6 +2,6 @@
 
 interface Promotion
 {
-    public function appliquerPromotion(Produit $produit): float;
+    public function appliquerPromotion($produit): float;
 }
 ?>

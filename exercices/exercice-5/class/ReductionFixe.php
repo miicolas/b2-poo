@@ -1,6 +1,5 @@
 <?php
 
-
 require_once './interface/Promotion.php';
 class ReductionFixe implements Promotion
 {
@@ -11,10 +10,16 @@ class ReductionFixe implements Promotion
         $this->promotion = $promotion;
     }
 
-    public function appliquerPromotion(Produit $produit): float
+    public function appliquerPromotion($produit): float
     {
-        $prixFinal = $produit->calculerPrixFinal();
-        return $prixFinal - $this->promotion;
+        if ($this->promotion <= $produit AND $this->promotion > 0 ){
+            $prixFinal = $produit->calculerPrixFinal();
+            return $prixFinal - $this->promotion;
+
+        } else {
+            throw new Exception("Prix invalide invalide");
+        }
     }
+
 }
 ?>

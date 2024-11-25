@@ -13,7 +13,7 @@ class ReductionPourcentage implements Promotion
         $this->promotion = $promotion;
     }
 
-    public function appliquerPromotion(Produit $produit): float
+    public function appliquerPromotion($produit): float
     {
         if ($this->promotion > 100 OR $this->promotion < 1 )
         {
